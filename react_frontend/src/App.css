@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+}
+body{
+  margin: 0;
+  padding: 0;
+
+}
+.App-header ul{
+  display: flex;
+  justify-content: space-around;
+  height: 50px;
+  background-color: black;
+  align-items: center;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bolder;
+  color: white;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border: 2px solid;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  box-shadow: grey 5px 5px 10px 10px;
+  margin-top: 100px;
+}
+input{
+  height: 35px;
+  width: 200px;
+  border: 2px solid;
+  padding: 5px;
+  box-shadow: gray 2px 2px;
+}
+.btn{
+  background-color: mediumspringgreen;
+  font-weight: bolder;
+  font-size: 18px;
+
+}
+
+table{
+    border: 2px solid;
+    margin: 25px auto;
+    border-collapse: collapse;
+}
+th{
+    border: 2px solid;
+    padding: 5px;
+    background-color: aqua;
+}
+td{
+    border: 2px solid;
+    padding: 5px;
+    background-color: whitesmoke;
+}
+.btn-t{
+    padding: 0px;
+}
+.btn-2{
+    height: 30px;
+    width: 70px;
+    background-color: white;
+    color: red;
+    border: none;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.btn-2:hover{
+    background-color: red;
+    color: white;
+}

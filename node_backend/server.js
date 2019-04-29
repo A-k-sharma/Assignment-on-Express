@@ -1,7 +1,7 @@
 const express = require('express');
 const uuid = require('uuid');
-const data = require('./data');
 const about = require('./about');
+const data = require('./data');
 console.log(about);
 const path = require('path');
 const cors = require('cors');
@@ -26,9 +26,17 @@ app.use((req,res,next)=>{
 });
 app.get('/data.json',(req,res) => {
     res.setHeader('Content-Type', 'application/json');
-    let usersData=JSON.stringify(data);
-    console.log("yha",usersData);
-    res.send(usersData);
+    fs.readFile(path.join(__dirname,'data.json'),'utf8',(err,data)=> {
+        if (err) {
+            console.log("EROOR !!!", err)
+        }
+        console.log("data", typeof (data));
+        var usersData = JSON.parse(data);
+        console.log("data-2", usersData);
+        console.log("yha",usersData);
+        res.send(usersData);
+    });
+
 });
 // app.post('/process_post', urlencodedParser, function (req, res) {
     // Prepare output in JSON format
@@ -59,7 +67,6 @@ app.get('/data.json',(req,res) => {
 // });
 
 app.delete('/data.json/:id', (req,res)=> {
-res.send("delete method runs");
 console.log("adnfjshfdssdb11111",req.body);
     fs.readFile(path.join(__dirname,'data.json'),'utf8',(err,data)=>{
         if(err){
@@ -68,7 +75,6 @@ console.log("adnfjshfdssdb11111",req.body);
         console.log("data",typeof (data));
         data= JSON.parse(data);
         console.log("data-2",typeof (data),data.length);
-
         var newData = data.filter(item => item.id !== req.params.id);
         console.log("hererer",newData,newData.length);
         newData = JSON.stringify(newData);
@@ -77,12 +83,11 @@ console.log("adnfjshfdssdb11111",req.body);
             if(err){
                 console.log("ERROR!!!!",err);
             }
-            temp = JSON.parse(newData);
-            console.log("heyyy!!!!",temp.length);
         })
     });
     // student = student.filter(item => item.ID !== req.params.id);
     // data = require('./data');
+
     res.end();
 });
 
